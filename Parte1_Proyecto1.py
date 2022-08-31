@@ -14,4 +14,15 @@ def drawSquare():
 
 #Eje de coordenadas
 def drawCartesianPlane():
-    pass
+    up()
+    goto(300, 0)
+    pendown()
+    goto(-300, 0)
+    up()
+    goto(0,300)
+    pendown()
+    goto(0,-300)
+
+
+drawCartesianPlane()
+done()
