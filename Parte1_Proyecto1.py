@@ -1,3 +1,4 @@
+from tkinter.ttk import setup_master
 from turtle import *
 from math import *
 
@@ -36,13 +37,38 @@ def drawCircle(centroX: int, centroY: int, radio: int):
     for x in reversed(range(Dominio["min"], Dominio["max"]+1)):
         y = k - sqrt(radio**2 - (x-h)**2)
         goto(x, y)
-    pass
+
+
+
+def DDA(x1: int, y1: int, x2: int, y2: int):
+    dy = y2 - y1
+    dx = x2 - x1
+
+    steps = 0
+
+    #asignar los pasos dependiendo de los deltas
+    if (dx > dy):
+        steps = abs(dx)
+    else:
+        steps = abs(dy)
+
+    Xinc = dx/steps
+    Yinc = dy/steps
+    up()
+    for i in range(steps):
+        x = x1
+        y = y1
+        goto(x, y)
+        dot(2, "red")
+
+        x1 = x + Xinc
+        y1 = y + Yinc
 
 
 #TODO: algoritmo que genere un cuadrado
 def drawSquare():
     #para esta parte tenemos que hacer 4 lineas usando el algoritmo DDA
-    pass
+    DDA(-25,-25,40,30)
 
 
 #Eje de coordenadas
@@ -58,4 +84,6 @@ def drawCartesianPlane():
 
 
 drawCartesianPlane()
+#drawCircle(0, 0, 100)
+drawSquare()
 done()
