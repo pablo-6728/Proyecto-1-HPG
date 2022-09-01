@@ -52,8 +52,13 @@ def DDA(x1: int, y1: int, x2: int, y2: int):
     else:
         steps = abs(dy)
 
-    Xinc = dx/steps
-    Yinc = dy/steps
+    #pendientes con la division por 0
+    try:
+        Xinc = dx/steps
+        Yinc = dy/steps
+    except NameError:
+        print('Division por 0')
+
     up()
     for i in range(steps):
         x = x1
@@ -68,7 +73,10 @@ def DDA(x1: int, y1: int, x2: int, y2: int):
 #TODO: algoritmo que genere un cuadrado
 def drawSquare():
     #para esta parte tenemos que hacer 4 lineas usando el algoritmo DDA
-    DDA(-25,-25,40,30)
+    DDA(-100, 0, 0, 100)
+    DDA(0, 100, 100, 0)
+    DDA(100, 0, 0, -100)
+    DDA(0, -100, -100, 0)
 
 
 #Eje de coordenadas
@@ -84,6 +92,6 @@ def drawCartesianPlane():
 
 
 drawCartesianPlane()
-#drawCircle(0, 0, 100)
+drawCircle(0, 0, 100)
 drawSquare()
 done()
