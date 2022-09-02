@@ -25,19 +25,18 @@ def drawCircle(centroX: int, centroY: int, radio: int):
 
     up()
     goto(Dominio["min"], centroY)
-    down()
 
     # Parte superior
     for x in range(Dominio["min"], Dominio["max"]+1):
         y = k + sqrt(radio**2 - (x-h)**2)
         goto(x, y)
+        dot(2, "blue")
 
     # Parte inferior
     for x in reversed(range(Dominio["min"], Dominio["max"]+1)):
         y = k - sqrt(radio**2 - (x-h)**2)
         goto(x, y)
-
-
+        dot(2, "blue")
 
 def DDA(x1: int, y1: int, x2: int, y2: int):
     dy = y2 - y1
