@@ -13,9 +13,8 @@ def drawCircle(centroX: int, centroY: int, radio: int):
 
     Dominio = {
         "min": centroX - radio,
-        "max": 0
+        "max": centroX + radio
     }
-    Dominio["max"] = Dominio["min"] + 2 * radio
     x, y = 0, 0
 
     # Eje x:
