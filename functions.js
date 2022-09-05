@@ -7,3 +7,8 @@ function draw() {
 	//los primeros parametros son la pos y el ultimo es el tamaño
 	square(100,100,200)
 }
+
+//TODO: hacer la funcion de relleno de color
+function FloodFill(){
+
+}
