@@ -2,8 +2,6 @@ from tkinter.ttk import setup_master
 from turtle import *
 from math import *
 
-
-#TODO: algoritmo que genere un circulo
 # Dibuja un círculo
 # Toma como referencia el centro tanto en x como en y, y el radio,
 # luego dibuja el círculo con las parámetros dados.
@@ -25,6 +23,7 @@ def drawCircle(centroX: int, centroY: int, radio: int):
 
     up()
     goto(Dominio["min"], centroY)
+    down()
 
     # Parte superior
     for x in range(Dominio["min"], Dominio["max"]+1):
@@ -68,7 +67,6 @@ def DDA(x1: int, y1: int, x2: int, y2: int):
         y1 = y + Yinc
 
 
-#TODO: algoritmo que genere un cuadrado
 def drawSquare():
     #para esta parte tenemos que hacer 4 lineas usando el algoritmo DDA
     DDA(-100, 0, 0, 100)
