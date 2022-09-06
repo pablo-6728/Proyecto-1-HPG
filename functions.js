@@ -10,7 +10,11 @@ function draw() {
 	cuadrado = square(0,0,200)
 	//getPixelArray(cuadrado)
 	console.log(cuadrado.get(50 , 50))
-	FloodFill(50, 50)
+	let bg = cuadrado.get(50 , 50)
+	FloodFill(50, 50, bg)
+
+	//agregar un floodfill aqu?
+	
 	noLoop()
 }
 
@@ -39,18 +43,17 @@ function getPixelArray(shape){
 	console.log(colory)
 }
 
-function FloodFill(x, y){
+function FloodFill(x, y, bg){
 	//coordenadas
-	
 	let pix = get(x, y)
 	console.log(pix)
-	if (pix === [255, 255, 255, 255]){
+	if (pix === bg){
 		console.log('Iniciando floodfill en el ' + x + ', ' + y)
-		set(x, y, 0)
-		FloodFill(x + 1, y)
-		FloodFill(x - 1, y)
-		FloodFill(x, y + 1)
-		FloodFill(x, y - 1)
+		set(x, y, color(0))
+		FloodFill(x + 1, y, bg)
+		FloodFill(x - 1, y, bg)
+		FloodFill(x, y + 1, bg)
+		FloodFill(x, y - 1, bg)
 
 	}
 	updatePixels()
