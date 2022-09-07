@@ -2,40 +2,44 @@ from tkinter.ttk import setup_master
 from turtle import *
 from math import *
 
-# Dibuja un círculo
-# Toma como referencia el centro tanto en x como en y, y el radio,
-# luego dibuja el círculo con las parámetros dados.
+# Dibuja un círculo usando el algoritmo de Bresenham_Midpoint.
 def drawCircle(centroX: int, centroY: int, radio: int):
-    # Fórmula para generar el círculo:
-    # y = k +- sqrt(r^2 - (x-h)^2)
+    x, y, r = radio, 0, radio
 
-    Dominio = {
-        "min": centroX - radio,
-        "max": centroX + radio
-    }
-    x, y = 0, 0
-
-    # Eje x:
-    h = centroX
-
-    # Eje y:
-    k = centroY
+    P = 1 - r
 
     up()
-    goto(Dominio["min"], centroY)
-    down()
+    while x > y:
+        y += 1
 
-    # Parte superior
-    for x in range(Dominio["min"], Dominio["max"]+1):
-        y = k + sqrt(radio**2 - (x-h)**2)
-        goto(x, y)
-        dot(2, "blue")
+        if P <= 0:
+            P = P + 2*y + 1
 
-    # Parte inferior
-    for x in reversed(range(Dominio["min"], Dominio["max"]+1)):
-        y = k - sqrt(radio**2 - (x-h)**2)
-        goto(x, y)
-        dot(2, "blue")
+        else:
+            x -= 1
+            P = P + 2*y - 2*x + 1
+
+        if x < y:
+            break
+
+        goto(x + centroX, y + centroY)
+        dot(2, "purple")
+        goto(-x + centroX, y + centroY)
+        dot(2, "purple")
+        goto(x + centroX, -y + centroY)
+        dot(2, "purple")
+        goto(-x + centroX, -y + centroY)
+        dot(2, "purple")
+
+        if x != y:
+            goto(y + centroX, x+ centroY)
+            dot(2, "purple")
+            goto(-y + centroX, x + centroY)
+            dot(2, "purple")
+            goto(y + centroX, -x + centroY)
+            dot(2, "purple")
+            goto(-y + centroX, -x + centroY)
+            dot(2, "purple")
 
 def DDA(x1: int, y1: int, x2: int, y2: int):
     dy = y2 - y1
@@ -86,7 +90,7 @@ def drawCartesianPlane():
     pendown()
     goto(0,-300)
 
-
+speed(0)
 drawCartesianPlane()
 drawCircle(0, 0, 100)
 drawSquare()
