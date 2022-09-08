@@ -41,5 +41,6 @@ def drawSquare(pos):
     
 
 up()
+speed(0)
 drawSquare(pos)
 done()
